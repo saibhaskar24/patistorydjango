@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from .serializers import UserSerializer, PostsSerializer , DetailsSerializer, InfoSerializer, PrescriptionsSerializer, TestsSerializer
-from .models import Posts
+from .models import Posts, Details, Info, Prescriptions, Tests
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -14,24 +14,20 @@ class PostsViewSet(viewsets.ModelViewSet):
 
 
 class DetailsViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = Details.objects.all()
     serializer_class = DetailsSerializer
-
-class PostsViewSet(viewsets.ModelViewSet):
-    queryset = Posts.objects.all()
-    serializer_class = PostsSerializer
 
 
 class InfoViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = Info.objects.all()
     serializer_class = InfoSerializer
 
 class PrescriptionsViewSet(viewsets.ModelViewSet):
-    queryset = Posts.objects.all()
+    queryset = Prescriptions.objects.all()
     serializer_class = PrescriptionsSerializer
 
 
 class TestsViewSet(viewsets.ModelViewSet):
-    queryset = Posts.objects.all()
+    queryset = Tests.objects.all()
     serializer_class = TestsSerializer
 

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import Posts, Details, Info, Prescriptions
+from .models import Posts, Details, Info, Prescriptions, Tests
 from rest_framework.validators import UniqueValidator
 
 
@@ -25,7 +25,7 @@ class DetailsSerializer(serializers.HyperlinkedModelSerializer):
 class InfoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Info
-        fields = ['uid', 'bp' , 'illness1', 'illness2', 'vaccination1', 'vaccination2' , 'bloodsugarlevel']
+        fields = ['uid', 'bp' , 'illness1', 'vaccination1', 'vaccination2' , 'bloodsugarlevel']
 
 
 class PrescriptionsSerializer(serializers.HyperlinkedModelSerializer):
@@ -36,8 +36,8 @@ class PrescriptionsSerializer(serializers.HyperlinkedModelSerializer):
 
 class TestsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Posts
-        fields = ['id', 'name' , 'content']
+        model = Tests
+        fields = ['uid', 'd' , 'tname', 'pdf']
 
 
 
